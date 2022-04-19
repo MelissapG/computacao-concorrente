@@ -2,7 +2,7 @@
 #include <pthread.h>
 
 #define NTHREADS 2
-#define N_ELEMENTS 1000
+#define N_ELEMENTS 10000
 
 //vetor de 1000 elementos
 int vec[N_ELEMENTS];
@@ -16,9 +16,18 @@ void * squared(void * arg) {
   pthread_exit(NULL);
 }
 
+int check() {
+  for(int init=0; init<N_ELEMENTS; init++) {
+    if(vec[init] != (init*init))
+      return 0;
+  };
+  return 1;
+}
+
 int main(void) {
   pthread_t tid[NTHREADS]; //identificador da thread no sistema
-  
+  int ret; //retorno da funcao check
+
   //cria um array com N_ELEMENTS
   for(int i=0; i<N_ELEMENTS; i++) {
     vec[i] = i;
@@ -34,11 +43,13 @@ int main(void) {
       printf("erro >> pthread_join\n");
     }
   };
-  //printa os valores na tela para conferir se estao corretos
-  for(int i=0; i<N_ELEMENTS; i++) {
-    printf("%d ", vec[i]);
-  };
-  printf("\n");
+  //confere se os valores estão corretos 
+  ret = check();
+  if(ret) {
+    printf("sucessfull: [code %d]\n", ret);
+  } else {
+    printf("failed: [code %d]\n", ret);
+  }
   pthread_exit(NULL);
   return 0;
 }
