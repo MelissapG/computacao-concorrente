@@ -12,7 +12,7 @@
 - 2 threads: / = 
 - 4 threads: / = 
 
-### 10^8*
+### 10^8
 - 1 threads: / = 
 - 2 threads: / = 
 - 4 threads: / = 
