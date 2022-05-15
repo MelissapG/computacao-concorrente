@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <math.h>
-#include "timer.h"
+#include "../timer.h"
 
 int *vet; //vetor de entrada
 int *saidaSeq; //vetor de saida seq
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
   //preenche o vetor de entrada
   srand(time(0));
   for(int i=0; i<dim; i++) {
-    vet[i] = rand();
+    vet[i] = rand() % 1000;
   }
 
   //seq
