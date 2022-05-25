@@ -13,7 +13,7 @@ int want=0; //indicador de escritor querendo escrever
 
 //variaveis para sincronizacao
 pthread_mutex_t mutex;
-pthread_cond_t cond_leit, cond_escr, cond_want;
+pthread_cond_t cond_leit, cond_escr;
 
 //entrada leitura
 void InicLeit (int id) {
